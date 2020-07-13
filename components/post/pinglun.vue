@@ -34,6 +34,7 @@
     </div>
     <div class="cmt-list">
       <div class="cmt-item">
+        
         <div class="cmt-info">
           <div class="img"></div>
           <span class="one">保护敌方水晶</span>
@@ -44,13 +45,14 @@
           <p></p>
           <div class="cmt-pic">
             <img src="../../assets/images/pic_sea.jpeg" alt style="width:78px;height:78px" />
+            
           </div>
           <div class="cmt-ctrl">
             <a href="javascript:;">回复</a>
           </div>
         </div>
       </div>
-      <div class="cmt-item">
+      <div class="cmt-item" v-for="(item,index) in pingluns" :key="index">
         <div class="cmt-info">
          <div class="img"></div>
          <span class="one">保护敌方水晶</span>
@@ -74,7 +76,7 @@
             </div>
           </div>
           <div class="cmt-new">
-            <p class="cmt-message">是酒不好喝，还是烟不好抽，还谈爱情吗</p>
+            <p class="cmt-message">{{item.follow.content}}</p>
             <div class="el-row el-row--flex"></div>
             <div class="cmt-ctrl">
               <a href="javascript:;">回复</a>
@@ -91,7 +93,8 @@ export default {
   data() {
     return {
       dialogImageUrl: "",
-      dialogVisible: false
+      dialogVisible: false,
+      pingluns:[]
     };
   },
   mounted(){
@@ -103,9 +106,10 @@ export default {
         post: query.id
       }
       }).then(res=>{
-        console.log(res.data);
-        console.log(query.id);
+        const {data}=res.data;
         
+        this.pingluns=data;
+        console.log(this.pingluns[0].follow.content);
         
       })
   },

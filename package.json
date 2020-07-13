@@ -21,6 +21,12 @@
     "vuex-persistedstate": "^2.7.0"
   },
   "devDependencies": {},
+  "config": {
+    "nuxt": {
+      "host": "0.0.0.0",
+      "port": 3000
+    }
+  },
   "main": "nuxt.config.js",
   "repository": {
     "type": "git",
